@@ -7,6 +7,7 @@ def register_mod(app_: Flask) -> None:
     """将所有路由蓝本进行注册"""
     app_.register_blueprint(error_mod)
     app_.register_blueprint(hook_mod)
+    app_.register_blueprint(paste_mod)
 
 
 def create_app(config) -> Flask:
