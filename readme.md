@@ -1,10 +1,10 @@
 # Api
 
-## purpose
+## Purpose
 
 design personal api
 
-## install
+## Install
 
 ### requirements
 
@@ -16,7 +16,7 @@ design personal api
 
 modify .env and .flaskenv
 
-## run
+## Run
 
 ```shell
     flask run --host 0.0.0.0 --port 80
