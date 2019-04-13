@@ -15,7 +15,7 @@ def read(key: str):
     :return: json response
     """
     result = read_from(g.redis, key.encode('utf8'))
-    return jsonify(result)
+    return jsonify({'common': {'status': True, 'msg': 'Success'}, 'result': result})
 
 
 @mod.route('/write/', methods=["POST"])
