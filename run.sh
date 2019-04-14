@@ -4,6 +4,7 @@ target_dir=$(dirname $0)
 cd $target_dir
 echo "working in ${PWD}"
 
+echo "Gunicorn Running..."
 source src/.env
 gunicorn src.app:app \
     -w 4 \
@@ -12,7 +13,6 @@ gunicorn src.app:app \
     --access-logfile log/flask-access.log \
     --log-level debug \
     --limit-request-field_size 8190
-echo "Gunicorn Running..."
 
 
 
