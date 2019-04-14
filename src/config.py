@@ -11,6 +11,7 @@ class BaseConfig:
     PASTE_PUBLIC_KEY_PREFIX = b'PASTE_PUBLIC_'
     PASTE_SECRET_KEY_PREFIX = b'PASTE_SECRET_'
     ENABLE_CUSTOMIZED_LOG = os.environ.get('ENABLE_CUSTOMIZED_LOG', default=True)  # my log
+    JSON_AS_ASCII = False  # jsonify response support chinese
 
 
 class DevelopmentConfig(BaseConfig):
