@@ -30,8 +30,9 @@ def log(msg: str, target='api.log', log_type='INFO', isprint=False):
     :return:
     """
     log_type = log_type.upper()
-    s = '[{}] {} - {}'.format(log_type, get_now(), msg)
-    with open(os.path.join(os.getcwd(), 'log', target), 'a') as f:
+    s = '[{}] {} - {} \n'.format(log_type, get_now(), msg)
+    log_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'log', target)
+    with open(log_file, 'a') as f:
         f.write(s)
     if isprint:
         print(s)
