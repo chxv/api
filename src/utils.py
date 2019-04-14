@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import os
 
 
 def time_record(f):
@@ -30,8 +31,7 @@ def log(msg: str, target='api.log', log_type='INFO', isprint=False):
     """
     log_type = log_type.upper()
     s = '[{}] {} - {}'.format(log_type, get_now(), msg)
-
-    with open(target, 'w') as f:
+    with open(os.path.join(os.getcwd(), 'log', target), 'a') as f:
         f.write(s)
     if isprint:
         print(s)
