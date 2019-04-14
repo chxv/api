@@ -2,7 +2,7 @@
 
 ## Purpose
 
-design personal api
+> design personal api
 
 ## Install
 
@@ -14,10 +14,12 @@ design personal api
 
 ### environment
 
-modify .env and .flaskenv
+> modify .env and .flaskenv
 
 ## Run
 
 ```shell
+    pipenv shell
+    cd src/
     flask run --host 0.0.0.0 --port 80
 ```
