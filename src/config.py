@@ -10,7 +10,7 @@ class BaseConfig:
     MAX_DATA_EXPIRE_TIME = 60*60*24*3  # 3 days
     PASTE_PUBLIC_KEY_PREFIX = b'PASTE_PUBLIC_'
     PASTE_SECRET_KEY_PREFIX = b'PASTE_SECRET_'
-    ENABLE_CUSTOMIZED_LOG = True  # my log
+    ENABLE_CUSTOMIZED_LOG = os.environ.get('ENABLE_CUSTOMIZED_LOG', default=True)  # my log
 
 
 class DevelopmentConfig(BaseConfig):
