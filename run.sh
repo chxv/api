@@ -4,8 +4,8 @@ target_dir=$(dirname $0)
 cd $target_dir
 echo "working in ${PWD}"
 
-echo "Gunicorn Running..."
-source src/.env
+while read line; do eval "export $line && echo $line"; done < src/.env
+echo -e "Gunicorn Running... \n"
 gunicorn src.app:app \
     -w 4 \
     -b 0.0.0.0:80 \
