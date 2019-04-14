@@ -29,10 +29,17 @@ def write():
     post_data = request.json
     if not isinstance(post_data, dict):
         return jsonify({'common': {'status': False, 'msg': 'Forbidden'}}), 403
+    # key
+    key = str(post_data.get('key', ''))
+    if key:  # key filter: [a-zA-Z0-9] or -@
+        t_key = key.replace('-', '')
+        t_key = t_key.replace('@', '')
+        if not t_key.isalnum():
+            return jsonify({'common': {'status': False, 'msg': 'Invalid Key'}}), 403
     # data
     data = str(post_data.get('data', ''))
     if not data:
-        return jsonify({'common': {'status': False, 'msg': 'Forbidden'}}), 403
+        return jsonify({'common': {'status': False, 'msg': 'Invalid Data'}}), 403
     # expire time
     max_expire_time = current_app.config.get('MAX_DATA_EXPIRE_TIME')
     expire_time = post_data.get('expire_time', max_expire_time)
@@ -43,8 +50,7 @@ def write():
             return jsonify({'common': {'status': True, 'msg': 'success'}}), 202
     else:
         return jsonify({'common': {'status': False, 'msg': 'Forbidden'}}), 403
-    # key
-    key = str(post_data.get('key', ''))
+
     # write to redis
     write_to(g.redis, key.encode('utf8'), data.encode('utf8'), expire_time)  # store
     return jsonify({'common': {'status': True, 'msg': 'success'}}), 201
