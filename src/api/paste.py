@@ -18,7 +18,7 @@ def read(key: str):
     return jsonify({'common': {'status': True, 'msg': 'Success'}, 'result': result})
 
 
-@mod.route('/write/', methods=["POST"])
+@mod.route('/write/', methods=["POST", "OPTIONS"])
 @time_record
 def write():
     """
@@ -26,6 +26,11 @@ def write():
     else write data to public area.
     :return: json response
     """
+    if isinstance(request.method, str) and request.method.upper() == 'OPTIONS':
+        if g.CORS_valid:
+            return ''
+        else:
+            return jsonify({'common': {'status': False, 'msg': 'Forbidden'}}), 403
     post_data = request.json
     if not isinstance(post_data, dict):
         return jsonify({'common': {'status': False, 'msg': 'Forbidden'}}), 403
