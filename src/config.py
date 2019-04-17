@@ -9,7 +9,7 @@ enable_customized_log = False if enable_customized_log == '0' else True
 
 class BaseConfig:
     SECRET_KEY = os.environ.get('SECRET_KEY', default='a difficult key for flask')
-    ALLOWED_HOST = ('xchens.cn', '127.0.0.1')
+    ALLOWED_HOST = ('127.0.0.1', 'xchens.cn', 'www.xchens.cn', 'api.xchens.cn')
     MAX_DATA_EXPIRE_TIME = 60*60*24*3  # 3 days
     PASTE_PUBLIC_KEY_PREFIX = b'PASTE_PUBLIC_'
     PASTE_SECRET_KEY_PREFIX = b'PASTE_SECRET_'
