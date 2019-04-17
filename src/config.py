@@ -15,6 +15,7 @@ class BaseConfig:
     PASTE_SECRET_KEY_PREFIX = b'PASTE_SECRET_'
     ENABLE_CUSTOMIZED_LOG = enable_customized_log  # my log
     JSON_AS_ASCII = False  # jsonify response support chinese
+    REVERSE_PROXY = ""  # 反向代理
 
 
 class DevelopmentConfig(BaseConfig):
