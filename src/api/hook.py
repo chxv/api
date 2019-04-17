@@ -30,8 +30,9 @@ def after_req(response):
     try:
         ip, host, scheme = get_remote_info()
         if g.CORS_valid:
+            origin = request.headers.get("Origin") or '{}://{}'.format(scheme, host)
             # CORS
-            response.headers['Access-Control-Allow-Origin'] = '{}://{}'.format(scheme, host)
+            response.headers['Access-Control-Allow-Origin'] = origin
             response.headers['Access-Control-Allow-Methods'] = 'POST,GET,OPTIONS'
             response.headers['Access-Control-Allow-Headers'] = 'X-PINGOTHER,Content-Type'
             response.headers['Access-Control-Max-Age'] = '86400'
